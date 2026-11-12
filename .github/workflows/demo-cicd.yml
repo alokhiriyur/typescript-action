@@ -1,4 +1,3 @@
-# .github/workflows/demo-cicd.yml
 name: Demo CICD Multi-Stage Deployment
 
 on:
