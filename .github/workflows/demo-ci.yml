@@ -36,7 +36,7 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Build app
+      - name: Package app
         run: npm run build
 
       - name: Prepare deploy artifact
