@@ -37,7 +37,7 @@ jobs:
         run: npm test
 
       - name: Package app
-        run: npm run build
+        run: npm run package
 
       - name: Prepare deploy artifact
         run: |
