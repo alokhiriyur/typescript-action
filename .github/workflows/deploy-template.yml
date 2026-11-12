@@ -9,6 +9,7 @@ on:
         description: "The targeted GitHub environment name (e.g. dev, uat, prod)"
 
 permissions:
+  actions: read
   contents: read
 
 jobs:
@@ -23,6 +24,8 @@ jobs:
         with:
           name: node-app
           path: .
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
 
       - name: Verify build artifact exists
         run: test -f dist/index.js
