@@ -1,3 +1,4 @@
+# .github/workflows/deploy-template.yml
 name: Shared Deployment Blueprint
 
 on:
@@ -34,7 +35,7 @@ jobs:
           username: ${{ secrets.VM_USER }}
           password: ${{ secrets.VM_PASSWORD }}
           source: "dist/**,package.json,package-lock.json"
-          target: "C:/apps/alok"
+          target: "C:/apps/my-ts-app-100"
 
       - name: Install prod dependencies and restart PM2
         uses: appleboy/ssh-action@v1.0.3
@@ -45,17 +46,11 @@ jobs:
           script: |
             powershell -NoProfile -ExecutionPolicy Bypass -Command "
               Set-Location 'C:\apps\my-ts-app-100';
-              if (!(Test-Path 'node_modules')) {
-                npm ci --omit=dev
-              } else {
-                npm ci --omit=dev
-              }
-
+              npm ci --omit=dev;
               if (Get-Process pm2 -ErrorAction SilentlyContinue) {
                 pm2 restart my-ts-app
               } else {
                 pm2 start dist/index.js --name my-ts-app
               }
-
               pm2 save
             "
