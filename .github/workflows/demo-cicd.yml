@@ -3,7 +3,7 @@ name: Demo CICD Multi-Stage Deployment
 on:
   workflow_run:
     workflows:
-      - "Demo CI Pipeline"
+      - "Continuous Integration"
     types:
       - completed
 
