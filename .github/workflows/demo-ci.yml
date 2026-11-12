@@ -1,3 +1,4 @@
+# .github/workflows/demo-ci.yml
 name: Demo CI Pipeline
 
 on:
@@ -7,7 +8,6 @@ on:
   pull_request:
     branches:
       - main
-  workflow_call:
 
 permissions:
   contents: read
@@ -39,17 +39,12 @@ jobs:
       - name: Package app
         run: npm run package
 
-      - name: Prepare deploy artifact
-        run: |
-          mkdir -p deploy
-          cp -r dist deploy/
-          cp package.json deploy/
-          cp package-lock.json deploy/
-
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v4
         with:
           name: node-app
           path: |
-            deploy/**
+            dist/**
+            package.json
+            package-lock.json
           if-no-files-found: error
