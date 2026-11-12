@@ -1,4 +1,3 @@
-# .github/workflows/demo-ci.yml
 name: Demo CI Pipeline
 
 on:
