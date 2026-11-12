@@ -47,7 +47,7 @@ jobs:
           password: ${{ secrets.VM_PASSWORD }}
           script: |
             powershell -NoProfile -ExecutionPolicy Bypass -Command "
-              Set-Location 'C:\apps\my-ts-app-100';
+              Set-Location 'C:\apps\alok';
               npm ci --omit=dev;
               if (Get-Process pm2 -ErrorAction SilentlyContinue) {
                 pm2 restart my-ts-app
