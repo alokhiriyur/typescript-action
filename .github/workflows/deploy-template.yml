@@ -40,7 +40,7 @@ jobs:
           target: "C:/apps/alok"
 
       - name: Install prod dependencies and restart PM2
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
